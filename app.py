@@ -37,15 +37,9 @@ def main():
     df_tomtom_india_pune["congestion_ma"] = df_tomtom_india_pune['congestion'].rolling(7,center=False).mean() 
     df_tomtom_india_pune["diffRatio_ma"] = df_tomtom_india_pune['diffRatio'].rolling(7,center=False).mean() 
 
-       
-    df_tomtom_ia_congestion = pd.DataFrame()
-    df_tomtom_ia_congestion['date'] = df_tomtom_india_average['date']
-    df_tomtom_ia_congestion["congestion_ma"] = df_tomtom_india_average['congestion'].rolling(7,center=False).mean()
+    df_tomtom_india_average["congestion_ma"] = df_tomtom_india_average['congestion'].rolling(7,center=False).mean() 
+    df_tomtom_india_average["diffRatio_ma"] = df_tomtom_india_average['diffRatio'].rolling(7,center=False).mean()   
     
-    
-    df_tomtom_ia_diffRatio = pd.DataFrame()
-    df_tomtom_ia_diffRatio['date'] = df_tomtom_india_average['date']
-    df_tomtom_india_average["diffRatio_ma"] = df_tomtom_india_average['diffRatio'].rolling(7,center=False).mean()
     
     
     #Multiple selection for the provinces
@@ -71,7 +65,7 @@ def main():
     
     
     st.title("India Average Traffic Congestion")
-    st.line_chart(df_tomtom_ia_congestion)
+    st.line_chart(df_tomtom_india_average[['date','congestion','congestion_ma']])
     
     
     
@@ -93,7 +87,7 @@ def main():
     
     
     st.title("India Average Traffic Congestion DiffRatio")
-    st.line_chart(df_tomtom_ia_diffRatio)
+    st.line_chart(df_tomtom_india_average[['date', 'diffRatio', 'diffRatio_ma']])
 
 if __name__ == "__main__":
 
