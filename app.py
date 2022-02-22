@@ -63,7 +63,7 @@ def main():
     
     
     st.title("India Average Traffic Congestion")
-    plost.line_chart(df_tomtom_india_average, x='date', y=('congestion','congestion_ma'))
+    st.line_chart(df_tomtom_india_average, x='date', y=('congestion','congestion_ma'))
     
     
     
@@ -85,7 +85,7 @@ def main():
     
     
     st.title("India Average Traffic Congestion DiffRatio")
-    plost.line_chart(df_tomtom_india_average, x='date', y=('diffRatio', 'diffRatio_ma'))
+    st.line_chart(df_tomtom_india_average, x='date', y=('diffRatio', 'diffRatio_ma'))
 
 if __name__ == "__main__":
 
