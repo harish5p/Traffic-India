@@ -6,8 +6,8 @@ import streamlit as st
 def get_data():
     df_tomtom = pd.read_csv("https://raw.githubusercontent.com/ActiveConclusion/COVID19_mobility/master/tomtom_reports/tomtom_trafic_index.csv")
     df_tomtom_india = df_tomtom[df_tomtom['country']=="India"]
-    df_tomtom_india['date'] = pd.to_datetime(df_tomtom_india['date'])
     df_tomtom_india_average = df_tomtom_india.groupby("date").mean()
+    df_tomtom_india['date'] = pd.to_datetime(df_tomtom_india['date'])    
     return df_tomtom_india, df_tomtom_india_average
 
 
@@ -63,7 +63,7 @@ def main():
     
     
     st.title("India Average Traffic Congestion")
-    plost.line_chart(df_tomtom_india_average, x='date', y=('congestion'))
+    plost.line_chart(df_tomtom_india_average, x='date', y=('congestion','congestion_ma'))
     
     
     
