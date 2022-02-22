@@ -49,3 +49,15 @@ def main():
     st.title("Bengaluru Traffic Congestion")
     bengaluru_congestion = plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('congestion', 'congestion_ma'))
     st.line_chart(bengaluru_congestion)
+
+if __name__ == "__main__":
+
+    #Here we are setting the page configuration setting
+    st.set_page_config(
+        page_title="India Traffic Congestions",
+        page_icon="🇮🇳",
+        layout="wide",
+        initial_sidebar_state="auto"
+    )
+
+    main()
