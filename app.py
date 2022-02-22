@@ -45,10 +45,46 @@ def main():
     st.sidebar.caption("This dashboard showcases the daily number of traffic congestions recorded in major cities of India. The data is taken from https://github.com/ActiveConclusion/COVID19_mobility")    
     st.sidebar.caption("This dashboard is created by Harish Pentapalli https://github.com/harish5p/Traffic-India")    
               
-    #Creating Bengaluru Traffic Congestion plot
     st.title("Bengaluru Traffic Congestion")
-    bengaluru_congestion = plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('congestion', 'congestion_ma'))
-    st.line_chart(bengaluru_congestion)
+    plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('congestion', 'congestion_ma'))
+    
+    
+    st.title("Mumbai Traffic Congestion")
+    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('congestion', 'congestion_ma'))
+    
+    
+    st.title("New Delhi Traffic Congestion")
+    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('congestion', 'congestion_ma'))
+    
+    
+    st.title("Pune Traffic Congestion")
+    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('congestion', 'congestion_ma'))
+    
+    
+    st.title("India Average Traffic Congestion")
+    plost.line_chart(df_tomtom_india_average, x='date', y=('congestion', 'congestion_ma'))
+    
+    
+    
+     #Creating Bengaluru Traffic Congestion Diff plot
+    st.title("Bengaluru Traffic Congestion DiffRatio")
+    plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('diffRatio', 'diffRatio_ma'))
+    
+    
+    st.title("Mumbai Traffic Congestion DiffRatio")
+    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('diffRatio', 'diffRatio_ma'))
+    
+    
+    st.title("New Delhi Traffic Congestion DiffRatio")
+    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('diffRatio', 'diffRatio_ma'))
+    
+    
+    st.title("Pune Traffic Congestion DiffRatio")
+    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('diffRatio', 'diffRatio_ma'))
+    
+    
+    st.title("India Average Traffic Congestion DiffRatio")
+    plost.line_chart(df_tomtom_india_average, x='date', y=('diffRatio', 'diffRatio_ma'))
 
 if __name__ == "__main__":
 
