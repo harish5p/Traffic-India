@@ -7,7 +7,7 @@ def get_data():
     df_tomtom = pd.read_csv("https://raw.githubusercontent.com/ActiveConclusion/COVID19_mobility/master/tomtom_reports/tomtom_trafic_index.csv")
     df_tomtom_india = df_tomtom[df_tomtom['country']=="India"]
     df_tomtom_india['date'] = pd.to_datetime(df_tomtom_india['date'])
-    df_tomtom_india_average = data.groupby("date").mean()
+    df_tomtom_india_average = df_tomtom_india.groupby("date").mean()
     return df_tomtom_india, df_tomtom_india_average
 
 
