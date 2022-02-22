@@ -7,12 +7,9 @@ def get_data():
     df_tomtom = pd.read_csv("https://raw.githubusercontent.com/ActiveConclusion/COVID19_mobility/master/tomtom_reports/tomtom_trafic_index.csv")
     df_tomtom_india = df_tomtom[df_tomtom['country']=="India"]
     df_tomtom_india['date'] = pd.to_datetime(df_tomtom_india['date'])
-    return df_tomtom_india
-
-def average_data():
-    data = get_data()
     df_tomtom_india_average = data.groupby("date").mean()
-    return df_tomtom_india_average
+    return df_tomtom_india, df_tomtom_india_average
+
 
 
 def main():
@@ -20,13 +17,13 @@ def main():
     st.title("Daily TomTom traffic congestion data of major cities in India")
 
     #Getting the data and displaying the dataframe in the dashboard
-    data = get_data()
+    data, df_tomtom_india_average = get_data()
     
     df_tomtom_india_bengaluru = data[data['city']=="Bengaluru"]
     df_tomtom_india_mumbai = data[data['city']=="Mumbai"]
     df_tomtom_india_newdelhi = data[data['city']=="New Delhi"]
     df_tomtom_india_pune = data[data['city']=="Pune"]
-    df_tomtom_india_average = average_data()
+    
 
     df_tomtom_india_bengaluru["congestion_ma"] = df_tomtom_india_bengaluru['congestion'].rolling(7,center=False).mean() 
     df_tomtom_india_bengaluru["diffRatio_ma"] = df_tomtom_india_bengaluru['diffRatio'].rolling(7,center=False).mean() 
