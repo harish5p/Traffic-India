@@ -62,8 +62,8 @@ def main():
     
     
     st.title("India Average Traffic Congestion")
-    #plost.line_chart(df_tomtom_india_average, x='date', y=('congestion', 'congestion_ma'))
-    st.line_chart(df_tomtom_india_average['date','congestion','congestion_ma'])
+    plost.line_chart(df_tomtom_india_average, x='date', y=('congestion', 'congestion_ma'))
+    
     
     
      #Creating Bengaluru Traffic Congestion Diff plot
