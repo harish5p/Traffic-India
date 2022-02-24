@@ -1,8 +1,7 @@
-import plost
 import pandas as pd
 import streamlit as st
 
-#@st.cache
+
 def get_data():
     df_tomtom = pd.read_csv("https://raw.githubusercontent.com/ActiveConclusion/COVID19_mobility/master/tomtom_reports/tomtom_trafic_index.csv")
     df_tomtom_india = df_tomtom[df_tomtom['country']=="India"]    
@@ -40,28 +39,31 @@ def main():
     df_tomtom_india_average["congestion_ma"] = df_tomtom_india_average['congestion'].rolling(7,center=False).mean() 
     df_tomtom_india_average["diffRatio_ma"] = df_tomtom_india_average['diffRatio'].rolling(7,center=False).mean()   
     
+    # Change the index to date
+    df_tomtom_india_bengaluru = df_tomtom_india_bengaluru.set_index('date', inplace=True)
+    df_tomtom_india_mumbai = df_tomtom_india_mumbai.set_index('date', inplace=True)
+    df_tomtom_india_newdelhi = df_tomtom_india_newdelhi.set_index('date', inplace=True)
+    df_tomtom_india_pune = df_tomtom_india_pune.set_index('date', inplace=True)
     
-    
-    #Multiple selection for the provinces
-    cities_options = list(data.city.unique()) + ['India-Average']
+    #Sidebar    
     st.sidebar.header("Traffic Congestions")
     st.sidebar.caption("This dashboard showcases the daily number of traffic congestions recorded in major cities of India. The data is taken from https://github.com/ActiveConclusion/COVID19_mobility")    
     st.sidebar.caption("This dashboard is created by Harish Pentapalli https://github.com/harish5p/Traffic-India")    
               
     st.title("Bengaluru Traffic Congestion")
-    st.line_chart(plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('congestion', 'congestion_ma')))
+    st.line_chart(df_tomtom_india_bengaluru[['congestion','congestion_ma']])
     
     
     st.title("Mumbai Traffic Congestion")
-    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('congestion', 'congestion_ma'))
+    st.line_chart(df_tomtom_india_mumbai[['congestion','congestion_ma']])
     
     
     st.title("New Delhi Traffic Congestion")
-    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('congestion', 'congestion_ma'))
+    st.line_chart(df_tomtom_india_newdelhi[['congestion','congestion_ma']])
     
     
     st.title("Pune Traffic Congestion")
-    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('congestion', 'congestion_ma'))
+    st.line_chart(df_tomtom_india_pune[['congestion','congestion_ma']])
     
     
     st.title("India Average Traffic Congestion")
@@ -71,19 +73,19 @@ def main():
     
      #Creating Bengaluru Traffic Congestion Diff plot
     st.title("Bengaluru Traffic Congestion DiffRatio")
-    plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('diffRatio', 'diffRatio_ma'))
+    st.line_chart(df_tomtom_india_bengaluru[['diffRatio', 'diffRatio_ma']])
     
     
     st.title("Mumbai Traffic Congestion DiffRatio")
-    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('diffRatio', 'diffRatio_ma'))
+    st.line_chart(df_tomtom_india_mumbai[['diffRatio', 'diffRatio_ma']])
     
     
     st.title("New Delhi Traffic Congestion DiffRatio")
-    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('diffRatio', 'diffRatio_ma'))
+    st.line_chart(df_tomtom_india_newdelhi[['diffRatio', 'diffRatio_ma']])
     
     
     st.title("Pune Traffic Congestion DiffRatio")
-    plost.line_chart(df_tomtom_india_mumbai, x='date', y=('diffRatio', 'diffRatio_ma'))
+    st.line_chart(df_tomtom_india_pune[['diffRatio', 'diffRatio_ma']])
     
     
     st.title("India Average Traffic Congestion DiffRatio")
