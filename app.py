@@ -40,10 +40,10 @@ def main():
     df_tomtom_india_average["diffRatio_ma"] = df_tomtom_india_average['diffRatio'].rolling(7,center=False).mean()   
     
     # Change the index to date
-    df_tomtom_india_bengaluru = df_tomtom_india_bengaluru.set_index('date', inplace=True)
-    df_tomtom_india_mumbai = df_tomtom_india_mumbai.set_index('date', inplace=True)
-    df_tomtom_india_newdelhi = df_tomtom_india_newdelhi.set_index('date', inplace=True)
-    df_tomtom_india_pune = df_tomtom_india_pune.set_index('date', inplace=True)
+    df_tomtom_india_bengaluru.set_index('date', inplace=True)
+    df_tomtom_india_mumbai.set_index('date', inplace=True)
+    df_tomtom_india_newdelhi.set_index('date', inplace=True)
+    df_tomtom_india_pune.set_index('date', inplace=True)
     
     #Sidebar    
     st.sidebar.header("Traffic Congestions")
