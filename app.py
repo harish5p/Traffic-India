@@ -49,7 +49,7 @@ def main():
     st.sidebar.caption("This dashboard is created by Harish Pentapalli https://github.com/harish5p/Traffic-India")    
               
     st.title("Bengaluru Traffic Congestion")
-    plost.line_chart(df_tomtom_india_bengaluru, x='date', y=('congestion', 'congestion_ma'))
+    st.line_chart(df_tomtom_india_bengaluru[['congestion','congestion_ma']])
     
     
     st.title("Mumbai Traffic Congestion")
