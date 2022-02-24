@@ -2,7 +2,7 @@ import plost
 import pandas as pd
 import streamlit as st
 
-@st.cache
+#@st.cache
 def get_data():
     df_tomtom = pd.read_csv("https://raw.githubusercontent.com/ActiveConclusion/COVID19_mobility/master/tomtom_reports/tomtom_trafic_index.csv")
     df_tomtom_india = df_tomtom[df_tomtom['country']=="India"]    
