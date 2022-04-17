@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-
+# get the raw data
 def get_data():
     df_tomtom = pd.read_csv("https://raw.githubusercontent.com/ActiveConclusion/COVID19_mobility/master/tomtom_reports/tomtom_trafic_index.csv")
     df_tomtom_india = df_tomtom[df_tomtom['country']=="India"]    
@@ -12,7 +12,7 @@ def get_data():
 
 
 def main():
-    #Some title and descriptive text
+    #Title
     st.title("Daily TomTom traffic congestion data of major cities in India")
 
     #Getting the data and displaying the dataframe in the dashboard
